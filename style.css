@@ -1,0 +1,354 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/* --- Variáveis de Cores --- */
+:root {
+    --primary-color: #00a8f0;      /* Azul Ciano Vibrante */
+    --primary-hover: #008ecb;      /* Azul para interações */
+    --secondary-color: #f0f0f0;    /* Texto Claro Principal */
+    --tertiary-color: #a0a0a0;     /* Texto Secundário */
+    --bg-color: #121214;           /* Fundo da Página (Quase preto) */
+    --card-bg-color: #202024;      /* Fundo do Card */
+    --sidebar-bg: #121214;         /* Fundo da Sidebar */
+    --border-color: #323238;       /* Bordas Sutis */
+    --img-bg: #09090a;             /* Fundo atrás das imagens */
+}
+
+/* --- Reset Básico --- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: grid;
+    grid-template-columns: 300px 1fr; /* Sidebar fixa + Conteúdo */
+    background: var(--bg-color);
+    color: var(--secondary-color);
+    font-family: "Poppins", sans-serif;
+    min-height: 100vh;
+}
+
+/* --- Sidebar / Header (Barra Lateral) --- */
+header {
+    grid-column: 1 / 2;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 300px;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    background-color: var(--sidebar-bg);
+    border-right: 1px solid var(--border-color);
+    z-index: 10;
+}
+
+/* Logotipo */
+header img {
+    width: 100%;
+    max-width: 200px;
+    align-self: center;
+    margin-bottom: 1rem;
+    object-fit: contain;
+}
+
+/* --- BARRA DE BUSCA (Input + Botão Lado a Lado) --- */
+.search-bar {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    width: 100%;
+}
+
+/* Input de Texto */
+.search-input {
+    flex-grow: 1; /* Ocupa o espaço disponível */
+    padding: 10px 14px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    background: var(--card-bg-color);
+    color: var(--secondary-color);
+    font-family: inherit;
+    font-size: 0.85rem;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.search-input::placeholder {
+    color: #5e5e66;
+}
+
+.search-input:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(0, 168, 240, 0.2);
+}
+
+/* --- BOTÃO LUPA (Discreto -> Neon no Hover) --- */
+.search-button {
+    width: 42px;
+    height: 42px; /* Altura igual à do input */
+    padding: 0;
+    
+    border-radius: 8px;
+    
+    /* ESTADO NORMAL: Escuro e discreto */
+    background-color: var(--card-bg-color);
+    border: 1px solid var(--border-color);
+    color: var(--primary-color); /* Ícone azul */
+    
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    
+    box-shadow: none;
+    transition: all 0.3s ease;
+}
+
+.search-button:hover {
+    /* ESTADO HOVER: Aceso e Vibrante */
+    background: linear-gradient(135deg, var(--primary-color), #40c4ff);
+    color: #fff; /* Ícone fica branco */
+    border-color: transparent;
+    
+    /* Efeito de Brilho Neon */
+    box-shadow: 0 0 20px rgba(0, 168, 240, 0.6);
+    
+    transform: translateY(-2px) scale(1.05);
+}
+
+.search-button:active {
+    transform: scale(0.95);
+}
+
+/* --- Conteúdo Principal (Direita) --- */
+main {
+    grid-column: 2 / 3;
+    padding: 2rem 3rem;
+    width: 100%;
+}
+
+/* Grid dos Cards */
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+/* --- Design do Card --- */
+article.card {
+    background: var(--card-bg-color);
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+}
+
+article.card:hover {
+    transform: translateY(-6px);
+    border-color: var(--primary-color);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Imagem do Card */
+article.card img {
+    width: 100%;
+    height: 198px; /* Altura fixa */
+    object-fit: contain; /* Não corta a imagem */
+    background-color: var(--img-bg); /* Fundo escuro */
+    border-bottom: 1px solid var(--border-color);
+}
+
+/* Conteúdo do Card */
+.card-content {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    flex-grow: 1;
+}
+
+.category {
+    font-size: 0.75rem;
+    color: var(--primary-color);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+article h2 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin: 0;
+    color: #fff;
+    line-height: 1.3;
+}
+
+.description {
+    font-size: 0.85rem;
+    color: var(--tertiary-color);
+    line-height: 1.6;
+    margin-top: 0.5rem;
+    
+    /* Limita a 4 linhas */
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* Tags de Plataforma */
+.platforms {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 1rem;
+}
+
+.platform-tag {
+    background-color: #2a2a30;
+    color: #e1e1e6;
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    font-weight: 500;
+    border: 1px solid #323238;
+}
+
+/* Rodapé do Card */
+.card-footer {
+    padding: 1rem 1.5rem;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-top: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto;
+}
+
+.price {
+    font-weight: 700;
+    color: #fff;
+    font-size: 0.95rem;
+}
+
+.btn-link {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: gap 0.2s;
+}
+
+.btn-link:hover {
+    text-decoration: underline;
+    gap: 8px;
+}
+
+/* --- Responsividade --- */
+@media (max-width: 768px) {
+    body {
+        grid-template-columns: 1fr; /* Remove sidebar fixa */
+    }
+
+    header {
+        position: relative;
+        width: 100%;
+        height: auto;
+        border-right: none;
+        border-bottom: 1px solid var(--border-color);
+        padding: 1.5rem;
+        align-items: center;
+    }
+
+    .search-bar {
+        width: 100%;
+        max-width: 400px;
+    }
+
+    main {
+        grid-column: 1 / 2;
+        padding: 1.5rem;
+    }
+    
+    .card-container {
+        grid-template-columns: 1fr;
+    }
+}
+/* --- ÁREA DE TAGS --- */
+.tags-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    margin-top: 1rem; /* Espaço entre a busca e as tags */
+}
+
+.tags-title {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    color: var(--tertiary-color);
+    letter-spacing: 1px;
+    font-weight: 600;
+    margin-left: 5px;
+}
+
+.tags-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.tag {
+    background-color: var(--card-bg-color);
+    border: 1px solid var(--border-color);
+    color: var(--tertiary-color);
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: inherit;
+}
+
+.tag:hover {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+    background-color: rgba(0, 168, 240, 0.1);
+    transform: translateY(-2px);
+}
+
+.tag:active {
+    transform: scale(0.95);
+}
+/* --- Personalização da Barra de Rolagem (Scrollbar) --- */
+/* Funciona no Chrome, Edge e Safari */
+
+::-webkit-scrollbar {
+    width: 15px; /* Largura da barra */
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-color); /* Cor do fundo do trilho */
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--border-color); /* Cor da barra em repouso */
+    border-radius: 8px; /* Borda arredondada */
+    border: 2px solid var(--bg-color); /* Espacinho entre a barra e o fundo */
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: var(--primary-color); /* Fica azul neon ao passar o mouse */
+}

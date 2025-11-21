@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="indie.png">
+    <title>Jogos Indie Brasileiros</title>
+</head>
+<body>
+    <header>
+        <img src="logo2.png" alt="Capa do Jogo ${jogo.name}">
+<!--         <h1>Jogos Indie | Brasil</h1> -->
+        <div class="search-bar">
+            <input class="search-input" type="text" placeholder="Encontre seu jogo...">
+            <button class="search-button">🔍</button>
+        </div>
+        <div class="tags-wrapper">
+    <h3 class="tags-title">Categorias Populares</h3>
+    <div class="tags-container">
+        <button class="tag" onclick="filtrarPorTag('Ação')">Ação</button>
+        <button class="tag" onclick="filtrarPorTag('Aventura')">Aventura</button>
+        <button class="tag" onclick="filtrarPorTag('RPG')">RPG</button>
+        <button class="tag" onclick="filtrarPorTag('Plataforma')">Plataforma</button>
+        <button class="tag" onclick="filtrarPorTag('Terror')">Terror</button>
+        <button class="tag" onclick="filtrarPorTag('Corrida')">Corrida</button>
+        <button class="tag" onclick="filtrarPorTag('PC')">PC</button>
+        <button class="tag" onclick="filtrarPorTag('Playstation')">Playstation</button>
+        <button class="tag" onclick="filtrarPorTag('Xbox')">Xbox</button>
+        <button class="tag" onclick="filtrarPorTag('Switch')">Switch</button>
+        <button class="tag" onclick="filtrarPorTag('Mobile')">Mobile</button>
+        <button class="tag" onclick="filtrarPorTag('Todos')">Todos</button>
+    </div>
+</div>
+    </header>
+
+    <main>
+        <section class="card-container">
+            <!-- <article class="card">
+                <h2>Horizon Chase Turbo</h2>
+                <p>Corrida</p>
+                <p>Um jogo de corrida arcade com visual retrô inspirado em clássicos dos anos 80 e 90, conhecido por sua trilha sonora e jogabilidade frenética.</p>
+                <p>AQUIRIS</p>
+                <p>Já disponível</p>
+                <p>PC", "PlayStation", "Xbox", "Switch", "Mobile</p>
+                <p>R$ 37,99</p>
+                <a href="https://store.steampowered.com/app/389140/Horizon_Chase_Turbo/" target="_blank">Saiba Mais</a>
+            </article> -->
+        </section>
+    </main>
+
+    <footer class="footer">
+        <ul class="footer-links">
+            <li>
+                <a href="https://www.linkedin.com/in/larissamachado/">LinkedIn</a>
+            </li>
+        </ul>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
